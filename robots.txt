@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_build/
+Disallow: /screenshots/
+
+Sitemap: https://bayvillageohio.com/sitemap.xml
