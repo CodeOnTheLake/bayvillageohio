@@ -22,7 +22,7 @@ NAV = [("about.html","About"),("relocation.html","Relocation"),("bay-village.htm
        ("buyers.html","Buy"),("sellers.html","Sell"),("vendors.html","Vendors"),("contact.html","Contact")]
 
 CREDITS = [
- ("Hero image: AI-edited (mirrored, daylight, people removed) from a photo by","Dan Crile","https://unsplash.com/@dancrile","https://unsplash.com/photos/cKwfDLa5XXw"),
+ ("Hero image","Dan Crile","https://unsplash.com/@dancrile","https://unsplash.com/photos/cKwfDLa5XXw"),
  ("Sunset over the water","Megs Harrison","https://unsplash.com/@mharrisonphotography","https://unsplash.com/photos/Dq3b6rRN6GM"),
  ("Cleveland skyline from Edgewater Beach","DJ Johnson","https://unsplash.com/@dj_johns1","https://unsplash.com/photos/qQLg8lPYU1k"),
  ("Huntington Beach at sunrise, Bay Village (CC BY 2.0)","Erik Drost","https://www.flickr.com/photos/edrost88/","https://commons.wikimedia.org/wiki/File:Brown_sunrise_at_Huntington_Beach.jpg"),
@@ -220,23 +220,7 @@ pages["index.html"] = head("index.html","Moving to Cleveland? Bay Village Realto
    <a class="btn btn-ghost-light" href="home-value.html">What's my home worth?</a>
   </div>
  </div>
- <p class="hero-credit">Hero image: AI-edited from a photo by <a href="https://unsplash.com/photos/cKwfDLa5XXw" target="_blank" rel="noopener">Dan Crile (Unsplash)</a></p>
-</section>
-
-<section class="bg-white niche" aria-labelledby="niche-h">
- <div class="container">
-  <div class="section-head"><div><span class="kicker">Relocation specialist</span><h2 id="niche-h">New to Cleveland? <em>Find the suburb that fits</em> before you find the house.</h2>
-  <p class="lead">Most people moving to Cleveland don't know a local agent, or which of the dozens of suburbs is right for them. Jen's focus is newcomers: she compares west side Cleveland suburbs and the wider metro against what matters to you, then guides you home.</p></div>
-  <a class="link-arrow" href="relocation.html">Relocation guide →</a></div>
-  <div class="grid g5">
-   <div class="pillar"><span class="num">01</span><h3>Commute</h3><p>Downtown, the airport, the Clinic, I-90 or I-480. Jen maps your daily drive.</p></div>
-   <div class="pillar"><span class="num">02</span><h3>Schools</h3><p>District ratings and school boundaries, explained.</p></div>
-   <div class="pillar"><span class="num">03</span><h3>Lake access</h3><p>Beaches, parks and lakefront suburbs, or quiet streets inland.</p></div>
-   <div class="pillar"><span class="num">04</span><h3>Budget</h3><p>Which areas match your price range and taxes.</p></div>
-   <div class="pillar"><span class="num">05</span><h3>Lifestyle</h3><p>Walkable downtowns, new construction or a classic neighborhood.</p></div>
-  </div>
-  <div class="btn-row"><a class="btn btn-dark" href="relocation.html">Which Cleveland suburb fits you?</a><a class="btn btn-outline" href="tel:{PHONE_TEL}">Call or text {PHONE_DISP}</a></div>
- </div>
+ <p class="hero-credit">Photo by <a href="https://unsplash.com/photos/cKwfDLa5XXw" target="_blank" rel="noopener">Dan Crile (Unsplash)</a></p>
 </section>
 
 <section>
@@ -253,6 +237,22 @@ pages["index.html"] = head("index.html","Moving to Cleveland? Bay Village Realto
    <picture><source srcset="assets/img/jennifer-halaska-realtor-bay-village.webp" type="image/webp"><img src="assets/img/jennifer-halaska-realtor-bay-village.jpg" width="622" height="628" loading="lazy" alt="Portrait of Jen Halaska, REALTOR® in Bay Village, Ohio"></picture>
    <figcaption>Jen Halaska, REALTOR®</figcaption>
   </figure>
+ </div>
+</section>
+
+<section class="bg-white niche" aria-labelledby="niche-h">
+ <div class="container">
+  <div class="section-head"><div><span class="kicker">Relocation specialist</span><h2 id="niche-h">New to Cleveland? <em>Find the suburb that fits</em> before you find the house.</h2>
+  <p class="lead">Most people moving to Cleveland don't know a local agent, or which of the dozens of suburbs is right for them. Jen's focus is newcomers: she compares west side Cleveland suburbs and the wider metro against what matters to you, then guides you home.</p></div>
+  <a class="link-arrow" href="relocation.html">Relocation guide →</a></div>
+  <div class="grid g5">
+   <div class="pillar"><span class="num">01</span><h3>Commute</h3><p>Downtown, the airport, the Clinic, I-90 or I-480. Jen maps your daily drive.</p></div>
+   <div class="pillar"><span class="num">02</span><h3>Schools</h3><p>District ratings and school boundaries, explained.</p></div>
+   <div class="pillar"><span class="num">03</span><h3>Lake access</h3><p>Beaches, parks and lakefront suburbs, or quiet streets inland.</p></div>
+   <div class="pillar"><span class="num">04</span><h3>Budget</h3><p>Which areas match your price range and taxes.</p></div>
+   <div class="pillar"><span class="num">05</span><h3>Lifestyle</h3><p>Walkable downtowns, new construction or a classic neighborhood.</p></div>
+  </div>
+  <div class="btn-row"><a class="btn btn-dark" href="relocation.html">Which Cleveland suburb fits you?</a><a class="btn btn-outline" href="tel:{PHONE_TEL}">Call or text {PHONE_DISP}</a></div>
  </div>
 </section>
 

@@ -53,8 +53,8 @@ resized to 720×920 (JPEG + WebP) for the site; originals were not altered in co
 
 ### Hero / Why Bay Village header
 - **File on site:** `assets/img/hero-lake-erie-daylight.jpg` (+ `.webp`)
-- **Description:** AI-edited (mirrored, daylight, people removed) from a Lake Erie photo (Edgewater Drive, Lakewood, Ohio) by Dan Crile.
-- **Author:** Dan Crile (original); AI-edited for this site
+- **Description:** Lake Erie shoreline (Edgewater Drive, Lakewood, Ohio) by Dan Crile.
+- **Author:** Dan Crile
 - **Source:** [Unsplash — cKwfDLa5XXw](https://unsplash.com/photos/cKwfDLa5XXw)
 - **License:** [Unsplash License](https://unsplash.com/license)
 
