@@ -13,7 +13,7 @@ PHONE_TEL   = "+13308076374"
 OFFICE_DISP = "(440) 793-0100"                  # brokerage office line (secondary)
 OFFICE_TEL  = "+14407930100"
 LICENSE     = "2025007585"                       # Ohio real estate license number
-BROKERAGE   = "Howard Hanna Real Estate Services"   # compliance mention (plain text, footer + About only)
+BROKERAGE   = "Howard Hanna Real Estate Services"   # named in nav, home intro, meta, About, footer; official logos in header + footer
 SEARCH_URL  = "https://jenniferhalaska.howardhanna.com/"  # REAL: her listing-search page
 OFFICE = {"street":"2055 Crocker Rd., Suite 101","city":"Westlake","region":"OH","zip":"44145"}
 # ---------------------------------------------------------------
@@ -21,17 +21,6 @@ OFFICE = {"street":"2055 Crocker Rd., Suite 101","city":"Westlake","region":"OH"
 NAV = [("about.html","About"),("relocation.html","Relocation"),("bay-village.html","Bay Village"),("areas.html","Communities"),
        ("buyers.html","Buy"),("sellers.html","Sell"),("vendors.html","Vendors"),("contact.html","Contact")]
 
-CREDITS = [
- ("Hero image","Dan Crile","https://unsplash.com/@dancrile","https://unsplash.com/photos/cKwfDLa5XXw"),
- ("Sunset over the water","Megs Harrison","https://unsplash.com/@mharrisonphotography","https://unsplash.com/photos/Dq3b6rRN6GM"),
- ("Cleveland skyline from Edgewater Beach","DJ Johnson","https://unsplash.com/@dj_johns1","https://unsplash.com/photos/qQLg8lPYU1k"),
- ("Huntington Beach at sunrise, Bay Village (CC BY 2.0)","Erik Drost","https://www.flickr.com/photos/edrost88/","https://commons.wikimedia.org/wiki/File:Brown_sunrise_at_Huntington_Beach.jpg"),
- ("Rocky River Reservation hike/bike bridge (CC BY-SA 4.0)","Chris Light","https://commons.wikimedia.org/wiki/User:CLight","https://commons.wikimedia.org/wiki/File:Rocky_River_Reservation_PC270039_nr_Little_Cedar_Point.JPG"),
- ("Crocker Park, Westlake (public domain)","Darryl Whitehead","https://commons.wikimedia.org/wiki/File:Crocker_Summer_080_(2).jpg","https://commons.wikimedia.org/wiki/File:Crocker_Summer_080_(2).jpg"),
- ("Sunset at Veterans Park, Avon Lake (CC BY-SA 3.0)","Robert Chriss","https://commons.wikimedia.org/wiki/File:Sunset_at_Veterans_Park_AL.JPG","https://commons.wikimedia.org/wiki/File:Sunset_at_Veterans_Park_AL.JPG"),
- ("Historic Town Hall at French Creek, Avon (CC BY-SA 4.0)","Tiburd","https://commons.wikimedia.org/wiki/User:Tiburd","https://commons.wikimedia.org/wiki/File:Avon_Town_Hall,_Avon,_Ohio_01.jpg"),
- ("Solstice Steps at Lakewood Park (CC BY-SA 4.0)","Drawing With Light","https://commons.wikimedia.org/wiki/User:Drawing_With_Light","https://commons.wikimedia.org/wiki/File:Solstice_Steps_Sunset.jpg"),
-]
 
 def pic(name, alt, cls, eager=False, w=2400, h=1400):
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
@@ -77,9 +66,23 @@ def crumbs_ld(name,path):
 def wordmark(tag="a"):
     return '<a class="wordmark" href="index.html" aria-label="Jen Halaska Real Estate — home"><span class="wm-name">Jen Halaska</span><span class="wm-sub">Real Estate · Bay Village, Ohio</span></a>'
 
+def hh_picture(variant):
+    if variant == "light":
+        name, w, h = "howard-hanna-logo-white", 2154, 2167
+    else:
+        name, w, h = "howard-hanna-logo", 2500, 1129
+    return (f'<picture class="hh-logo-{variant}">'
+            f'<source srcset="assets/img/{name}.webp" type="image/webp">'
+            f'<img src="assets/img/{name}.png" width="{w}" height="{h}" alt="Howard Hanna Real Estate Services" decoding="async">'
+            f'</picture>')
+
+def hh_logo(extra_class, variants):
+    return f'<a class="hh-logo {extra_class}" href="about.html#brokerage">{"".join(hh_picture(v) for v in variants)}</a>'
+
 def head(path,title,desc,extra=None,body_class="",robots="index, follow"):
     url = SITE_URL+"/"+("" if path=="index.html" else path)
     navl = "".join(f'<li><a href="{h}"{" aria-current=\"page\"" if h==path else ""}>{n}</a></li>' for h,n in NAV)
+    navl += '<li><a href="about.html#brokerage">Howard Hanna</a></li>'
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -119,6 +122,7 @@ def head(path,title,desc,extra=None,body_class="",robots="index, follow"):
   {wordmark()}
   <ul class="nav-links" id="nav-links">{navl}</ul>
   <div class="nav-cta">
+   {hh_logo("hh-logo-header", ("dark","light"))}
    <a class="btn btn-outline btn-sm" href="tel:{PHONE_TEL}">{PHONE_DISP}</a>
    <a class="btn btn-dark btn-sm" href="home-value.html">Home Value</a>
    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -129,12 +133,14 @@ def head(path,title,desc,extra=None,body_class="",robots="index, follow"):
 '''
 
 def foot():
-    cr = " · ".join(f'{t}: <a href="{u}" rel="noopener" target="_blank">{n}</a>' for t,n,_,u in CREDITS)
     return f'''</main>
 <footer class="site-footer">
  <div class="container">
   <div class="footer-top">
-   {wordmark()}
+   <div class="footer-brand">
+    {wordmark()}
+    {hh_logo("hh-logo-footer", ("light",))}
+   </div>
    <div class="btn-row" style="margin:0"><a class="btn btn-white btn-sm" href="contact.html">Contact Jen</a><a class="btn btn-ghost-light btn-sm" href="home-value.html">What's my home worth?</a></div>
   </div>
   <div class="footer-grid">
@@ -162,7 +168,6 @@ def foot():
    <span>© <span id="year">{datetime.date.today().year}</span> Jen Halaska, REALTOR®. Brokered by {BROKERAGE}. Ohio License #{LICENSE}.</span>
    <span>Equal Housing Opportunity. Information deemed reliable but not guaranteed.</span>
   </div>
-  <p class="credits">Photography credits — {cr}. Full source and license notes: <a href="https://github.com/CodeOnTheLake/bayvillageohio/blob/main/_build/IMAGE_CREDITS.md">image credits</a>.</p>
  </div>
 </footer>
 <script src="assets/js/main.js" defer></script>
@@ -180,12 +185,12 @@ def cta(h="Let's talk about your next move.", p="A relaxed, no-pressure conversa
 <div class="btn-row"><a class="btn btn-dark" href="contact.html?topic=Consultation#contact-form">Schedule a consultation</a><a class="btn btn-outline" href="tel:{PHONE_TEL}">Call {PHONE_DISP}</a><a class="btn btn-outline" href="relocation.html">Relocation guide</a></div></div></section>'''
 
 AREAS = [
- ("Bay Village","Cuyahoga County","Jen's hometown: a lakefront community on Lake Erie with Huntington Reservation, Cahoon Memorial Park and the Bay Village City Schools.","card-bay-village","Sunrise over Lake Erie from Huntington Beach in Bay Village, with the Cleveland skyline beyond the breakwall"),
- ("Rocky River","Cuyahoga County","A lakefront suburb at the mouth of the Rocky River, bordered by the Rocky River Reservation of the Cleveland Metroparks.","card-rocky-river","Hike-and-bike bridge over the Rocky River in the Rocky River Reservation of the Cleveland Metroparks"),
+ ("Bay Village","Cuyahoga County","Jen's hometown: a lakefront community on Lake Erie with Huntington Reservation, Cahoon Memorial Park and the Bay Village City Schools.","card-bay-village","Sunrise over Lake Erie from a sandy beach in Bay Village, with the Cleveland skyline on the horizon"),
+ ("Rocky River","Cuyahoga County","A lakefront suburb at the mouth of the Rocky River, bordered by the Rocky River Reservation of the Cleveland Metroparks.","card-rocky-river","A wooden boardwalk along the Rocky River beneath wooded shale cliffs"),
  ("Westlake","Cuyahoga County","A suburb about 12 miles west of downtown Cleveland with established neighborhoods, newer developments and Crocker Park shopping and dining.","card-westlake","The main street at Crocker Park in Westlake, Ohio"),
- ("Avon Lake","Lorain County","Lake Erie shoreline living just west of Bay Village, with a mix of lakefront streets and family neighborhoods.","card-avon-lake","Sunset over Lake Erie at Veterans Park in Avon Lake, Ohio"),
- ("Avon","Lorain County","A growing Lorain County city along the I-90 corridor, with a historic French Creek center, newer construction and established subdivisions.","card-avon","Avon's historic 1871 Town Hall in the French Creek area"),
- ("Lakewood","Cuyahoga County","Cleveland's walkable inner-ring neighbor on the lake, known for historic streets, Lakewood Park, the Solstice Steps and busy Detroit and Madison avenues.","card-lakewood","Sunset over Lake Erie from the Solstice Steps at Lakewood Park"),
+ ("Avon Lake","Lorain County","Lake Erie shoreline living just west of Bay Village, with a mix of lakefront streets and family neighborhoods.","card-avon-lake","Sunset over Lake Erie from a grassy park shoreline with benches in Avon Lake, Ohio"),
+ ("Avon","Lorain County","A growing Lorain County city along the I-90 corridor, with a historic French Creek center, newer construction and established subdivisions.","card-avon","Avon's historic red-brick Town Hall with a white cupola, set among trees"),
+ ("Lakewood","Cuyahoga County","Cleveland's walkable inner-ring neighbor on the lake, known for historic streets, Lakewood Park, the Solstice Steps and busy Detroit and Madison avenues.","card-lakewood","Sunset over Lake Erie from concrete steps leading down to the beach at Lakewood Park"),
  ("Greater Cleveland","Cuyahoga County & beyond","From west-side city neighborhoods to the wider metro — Jen helps clients wherever their search leads in Greater Cleveland.","card-cleveland","Cleveland skyline across the water from Edgewater Beach"),
  ("Fairview Park","Cuyahoga County","A residential suburb along the Rocky River Reservation with tree-lined streets and quick access to I-480 and I-90.",None,None),
  ("North Olmsted","Cuyahoga County","A west-side suburb with a wide range of home styles and price points, close to Great Northern shopping and I-480.",None,None),
@@ -203,11 +208,11 @@ pages={}
 HOME_FAQ = [
  ("Can Jen help if I'm moving to Cleveland from out of state?","Yes. Helping out-of-town buyers and families relocating to Cleveland is Jen's specialty. She starts by learning your commute, school, budget and lifestyle priorities, recommends the suburbs that fit, and then helps you find and buy the right home, including by video tour when you can't be here in person."),
  ("What are the best Cleveland suburbs for families?","It depends on your priorities, but many west side Cleveland suburbs pair strong schools with parks and lake access. On the 2024–25 Ohio School Report Card, Bay Village, Rocky River and Avon districts earned five stars, and Westlake, Avon Lake and Fairview Park earned 4.5. See the <a href=\"relocation.html\">relocation guide</a> for a side-by-side comparison."),
- ("Why do people choose Bay Village?","Bay Village combines Lake Erie shoreline, tree-lined streets (it's been a Tree City USA for 26 consecutive years), Huntington Beach, a five-star school district and a roughly 20–25 minute drive to Cleveland Hopkins Airport. Read <a href=\"why-bay-village.html\">13 reasons to live in Bay Village</a>."),
+ ("Why do people choose Bay Village?","Bay Village combines Lake Erie shoreline, tree-lined streets (it's been a Tree City USA for 26 consecutive years), Huntington Beach, a five-star school district and a roughly 20–25 minute drive to Cleveland Hopkins Airport. Read <a href=\"why-bay-village.html\">12 reasons to live in Bay Village</a>."),
  ("Is Jen a Bay Village realtor?","Yes. Jen lives in Bay Village and is a licensed Ohio REALTOR® (License #2025007585) serving Bay Village and all of Greater Cleveland, including Westlake, Rocky River, Lakewood, Avon Lake, Fairview Park, North Olmsted and Avon."),
 ]
 pages["index.html"] = head("index.html","Moving to Cleveland? Bay Village Realtor & Relocation Specialist | Jen Halaska",
- "Relocating to Cleveland, Ohio? Jen Halaska is a Bay Village realtor who helps out-of-town buyers and families find the right west side Cleveland suburb — then the right home.", faq_ld(HOME_FAQ), body_class="home") + f'''
+ "Jen Halaska, Howard Hanna REALTOR® in Bay Village, Ohio, helps out-of-town buyers and families relocating to Cleveland find the right west side suburb — then the right home.", faq_ld(HOME_FAQ), body_class="home") + f'''
 <section class="hero" aria-label="Introduction">
  {pic("hero-lake-erie-daylight","Sunlit Lake Erie shoreline with a rocky breakwall and sandy beach under a clear blue sky","hero-img",True,2560,1440)}
  <div class="container hero-inner">
@@ -220,7 +225,6 @@ pages["index.html"] = head("index.html","Moving to Cleveland? Bay Village Realto
    <a class="btn btn-ghost-light" href="home-value.html">What's my home worth?</a>
   </div>
  </div>
- <p class="hero-credit">Photo by <a href="https://unsplash.com/photos/cKwfDLa5XXw" target="_blank" rel="noopener">Dan Crile (Unsplash)</a></p>
 </section>
 
 <section>
@@ -230,6 +234,7 @@ pages["index.html"] = head("index.html","Moving to Cleveland? Bay Village Realto
    <div class="rule"></div>
    <h2>A neighbor who knows <em>the lake, the streets</em> and the market.</h2>
    <p class="lead">Bay Village isn't just a market Jen works in — it's home. That everyday, on-the-ground familiarity with its neighborhoods, lakefront parks and schools shapes the advice she gives every client, from first-time buyers to longtime homeowners ready for what's next.</p>
+   <p>As part of Howard Hanna, Jen brings the resources of one of the region's largest brokerages to every client.</p>
    <p>While Bay Village is home base, Jen serves all of Greater Cleveland, including Westlake, Rocky River, Lakewood, Avon Lake, Fairview Park, North Olmsted and Avon.</p>
    <div class="btn-row"><a class="btn btn-dark" href="about.html">About Jen</a><a class="btn btn-outline" href="why-bay-village.html">Why Bay Village?</a></div>
   </div>
@@ -322,7 +327,7 @@ pages["about.html"] = head("about.html","About Jen Halaska | Bay Village Realtor
    <p class="lead">Bay Village isn't just a market I work in — it's where I live. Living here gives me an everyday, on-the-ground feel for its neighborhoods, lakefront parks and schools, and I bring that local perspective to every client I work with.</p>
    <p>My specialty is people who are new to the area. If you're moving to Cleveland for a job, family or a fresh start, I'll help you compare the west side Cleveland suburbs and the wider metro, from commute and schools to lake access, budget and lifestyle, then find the right home. See my <a href="relocation.html">relocation guide</a>.</p>
    <p>While Bay Village is home base, I help buyers and sellers throughout Greater Cleveland, including Westlake, Rocky River, Lakewood, Avon Lake, Fairview Park, North Olmsted and Avon.</p>
-   <p>I'm a member of the Erin Knapp team in Westlake, and I'm licensed with {BROKERAGE}.</p>
+   <p id="brokerage">I'm a member of the Erin Knapp team in Westlake, and I'm licensed with {BROKERAGE}.</p>
    <p class="notice"><strong>[add bio details]</strong> — designations, years licensed, community involvement and a personal note from Jen.</p>
    <div class="signature">Jen</div>
    <div class="btn-row"><a class="btn btn-dark" href="contact.html">Contact Jen</a><a class="btn btn-outline" href="tel:{PHONE_TEL}">Call {PHONE_DISP}</a></div>
@@ -380,7 +385,7 @@ pages["bay-village.html"] = head("bay-village.html","Bay Village, Ohio Guide | H
    <h2 id="homes">Homes in Bay Village</h2>
    <p>Most homes in Bay Village are owner-occupied single-family houses on established, tree-lined streets, ranging from mid-century colonials and ranches to lakefront and near-lake properties. Every street has its own character — which is where local knowledge makes a difference.</p>
    <!-- PLACEHOLDER: Add Jen's own neighborhood tips (favorite streets, coffee spots, community traditions) in her voice. -->
-   <p class="notice">Thinking about a move? See <a href="why-bay-village.html">13 reasons people love living in Bay Village</a>.</p>
+   <p class="notice">Thinking about a move? See <a href="why-bay-village.html">12 reasons people love living in Bay Village</a>.</p>
    <div class="btn-row"><a class="btn btn-dark" href="{SEARCH_URL}" target="_blank" rel="noopener">Search Bay Village homes ↗</a><a class="btn btn-outline" href="home-value.html">Bay Village home value</a></div>
   </div>
  </div>
@@ -496,17 +501,16 @@ REASONS = [
  ("Five-star public schools","Bay Village City Schools earned a five-star overall rating on the 2024–25 Ohio School Report Card. The district reports that its performance index ranks 4th in Cuyahoga County.","Ohio Dept. of Education &amp; Workforce; Bay Village City Schools"),
  ("BAYarts &amp; the former Huntington Playhouse","The BAYarts campus inside Huntington Reservation offers classes, galleries and events for artists of all ages. Its historic buildings include the former Huntington Playhouse, a community theater from 1958 to 2015 that BAYarts is renovating for cultural programming.","BAYarts"),
  ("Cahoon Memorial Park &amp; Rose Hill Museum","The 116-acre park stretches from the lake to Wolf Road, with sports fields, a skate park, disc golf and the bluff-top path. It's also home to the Rose Hill Museum, run by the Bay Village Historical Society.","ODNR; Bay Village Historical Society"),
- ("Bay Days on the Fourth of July","Since the 1960s, the Kiwanis Club of Bay Village has hosted Bay Days at Cahoon Memorial Park: a multi-day Independence Day festival with rides, free gazebo concerts, a children's bike, trike and wagon parade, and fireworks on the Fourth.","Bay Village Kiwanis"),
  ("A safe community","Bay Village was named among Ohio's safest cities in SafeWise's 2025 ranking, based on FBI crime data.","SafeWise 2025"),
  ("Close to downtown Cleveland","Downtown Cleveland is about 15 miles east. Residents can be at a game, a show or the office in roughly 25 minutes, then back home by the lake.","Route estimates"),
  ("A brand-new library","The Cuyahoga County Public Library Bay Village Branch opened in 2022 at 27400 Wolf Road: two stories and 17,000 square feet with teen and children's rooms, a maker space with 3D printers, and a rooftop patio.","City of Bay Village"),
 ]
 def reason_cards():
     return "".join(f'<article class="reason"><span class="num">{i:02d}</span><h3>{t}</h3><p>{b}</p><span class="src">Source: {src}</span></article>' for i,(t,b,src) in enumerate(REASONS,1))
-LIST_LD = {"@context":"https://schema.org","@type":"ItemList","name":"Reasons to live in Bay Village, Ohio",
+LIST_LD = {"@context":"https://schema.org","@type":"ItemList","name":"12 Reasons to Live in Bay Village",
           "itemListElement":[{"@type":"ListItem","position":i,"name":t.replace("&amp;","&")} for i,(t,_,_) in enumerate(REASONS,1)]}
-pages["why-bay-village.html"] = head("why-bay-village.html","Why Live in Bay Village, Ohio | Jen Halaska",
- "13 reasons to live in Bay Village, Ohio: tree-lined streets, Lake Erie views, Huntington Beach, the Nature &amp; Science Center, five-star schools, kids biking to school and a short drive to Cleveland Hopkins Airport.", LIST_LD) + page_hero("Why Bay Village","Why live in Bay Village, Ohio?","Lake Erie on one side, tree-lined streets on the other, and a small-town spirit just minutes from Cleveland. Here's why Jen, and so many families, call Bay Village home.","<a href=\"bay-village.html\">Bay Village</a> / Why Bay Village","hero-lake-erie-daylight","Sunlit Lake Erie shoreline with a rocky breakwall and sandy beach") + f'''
+pages["why-bay-village.html"] = head("why-bay-village.html","12 Reasons to Live in Bay Village | Jen Halaska",
+ "12 reasons to live in Bay Village, Ohio: tree-lined streets, Lake Erie views, Huntington Beach, the Nature &amp; Science Center, five-star schools, kids biking to school and a short drive to Cleveland Hopkins Airport.", LIST_LD) + page_hero("Why Bay Village","12 Reasons to Live in Bay Village","Lake Erie on one side, tree-lined streets on the other, and a small-town spirit just minutes from Cleveland. Here's why Jen, and so many families, call Bay Village home.","<a href=\"bay-village.html\">Bay Village</a> / Why Bay Village","hero-lake-erie-daylight","Sunlit Lake Erie shoreline with a rocky breakwall and sandy beach") + f'''
 <section class="bg-white" style="padding-bottom:3rem">
  <div class="container split wide-left">
   <div>
@@ -527,7 +531,7 @@ pages["why-bay-village.html"] = head("why-bay-village.html","Why Live in Bay Vil
 </section>
 <section class="bg-stone">
  <div class="container split">
-  <figure style="margin:0" class="portrait">{pic("card-bay-village","Sunrise over Lake Erie from Huntington Beach in Bay Village","",False,720,920)}</figure>
+  <figure style="margin:0" class="portrait">{pic("card-bay-village","Sunrise over Lake Erie from a sandy beach in Bay Village, with the Cleveland skyline on the horizon","",False,720,920)}</figure>
   <div>
    <span class="kicker">Living here</span><div class="rule"></div>
    <h2>Seasons, sunsets and <em>Saturday mornings</em></h2>
@@ -725,7 +729,7 @@ Bay Village, Westlake, Rocky River, Avon Lake, Lakewood, Fairview Park, North Ol
 ## Key pages
 - [Home]({SITE_URL}/): Moving to Cleveland? Start here.
 - [Relocating to Cleveland]({SITE_URL}/relocation.html): which-suburb-fits-you guide comparing west side Cleveland suburbs, relocation process, remote buying, FAQ
-- [Why live in Bay Village]({SITE_URL}/why-bay-village.html): 13 sourced reasons
+- [Why live in Bay Village]({SITE_URL}/why-bay-village.html): 12 sourced reasons
 - [Bay Village guide]({SITE_URL}/bay-village.html): lakefront, parks, schools, homes
 - [Communities]({SITE_URL}/areas.html): west side Cleveland suburbs
 - [Buying]({SITE_URL}/buyers.html) · [Selling]({SITE_URL}/sellers.html) · [Home value]({SITE_URL}/home-value.html)

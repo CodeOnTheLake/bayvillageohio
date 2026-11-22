@@ -80,9 +80,6 @@ p{margin:0 0 1.15em}
 .hero h1{color:#fff;max-width:17ch;font-weight:400;font-size:clamp(2.8rem,5.4vw,4.8rem)}
 .hero .kicker{color:rgba(255,255,255,.85)}
 .hero .lead{color:rgba(255,255,255,.88);font-size:1.25rem}
-.hero-credit{position:absolute;right:1.2rem;bottom:1rem;z-index:2;font-size:.7rem;color:rgba(255,255,255,.7)}
-.hero-credit a{color:rgba(255,255,255,.85)}
-
 /* Page hero (image) */
 .page-hero{position:relative;padding:clamp(7rem,14vw,10rem) 0 clamp(3.5rem,7vw,5.5rem);background:var(--stone);border-bottom:1px solid var(--line)}
 .page-hero.has-img{color:#fff;background:var(--char);border:0;overflow:hidden}
@@ -214,6 +211,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--l
 .site-footer .btn-white{color:var(--char)}.site-footer .btn-white:hover{color:var(--char);background:var(--lake-l)}
 .site-footer .btn-ghost-light{color:#fff}.site-footer .btn-ghost-light:hover{color:var(--char);background:#fff}
 .footer-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-brand{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
 .footer-top .wordmark,.footer-top .wordmark .wm-name{color:#fff}
 .footer-top .wordmark .wm-sub{color:#8f979d}
 .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem;padding-top:3rem}
@@ -222,8 +220,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--l
 .site-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}
 .legal{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12);font-size:.76rem;color:#8f979d;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
 .legal a{color:#b7bdc2}
-.credits{font-size:.72rem;color:#7f878d;margin-top:.8rem}
-.credits a{color:#a3abb1;text-decoration:underline}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* Why Bay Village */
@@ -245,3 +241,18 @@ input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--l
 .nav-links a{font-size:.72rem;letter-spacing:.11em}
 .nav-cta .btn-sm{padding:.7rem .9rem;letter-spacing:.14em}
 @media (max-width:1320px){.nav-cta .btn-outline{display:none}}
+
+/* Howard Hanna official logos (no recoloring) */
+.hh-logo{display:inline-flex;align-items:center;flex-shrink:0;line-height:0;text-decoration:none}
+.hh-logo img{display:block;height:auto}
+.hh-logo-header{width:auto;max-width:160px;justify-content:flex-start}
+.hh-logo-header img{max-height:48px;width:auto;max-width:160px;object-fit:contain}
+.hh-logo-header .hh-logo-light{display:none}
+.home .site-header:not(.scrolled) .hh-logo-header .hh-logo-dark{display:none}
+.home .site-header:not(.scrolled) .hh-logo-header .hh-logo-light{display:block}
+.hh-logo-footer img{width:150px;height:auto}
+#brokerage{scroll-margin-top:110px}
+@media (max-width:1100px){
+  .hh-logo-header{max-width:120px}
+  .hh-logo-header img{max-height:40px;max-width:120px}
+}

@@ -1,59 +1,52 @@
 # Image credits — Jen Halaska / bayvillageohio.com
 
-All community-card photographs are used under a free license (Wikimedia Commons).
-Hero and remaining supporting photographs are from Unsplash. Files were cropped and
-resized to 720×920 (JPEG + WebP) for the site; originals were not altered in content.
+Internal record only. This file is not linked from the public site, and no
+photographer credits or license lines are shown on the pages.
 
 ## Featured community cards (six cities)
 
-### Bay Village — Huntington Beach at sunrise
+Five of the six featured cards are AI-generated originals (22 November 2026).
+They were cropped and resized to 720×920 (JPEG + WebP). No attribution is needed.
+Source files are in `_build/ai-city-photos/`. The previous Wikimedia Commons
+photographs for these five cards are no longer used on the site.
+
+### Bay Village — AI-generated original
 - **File on site:** `assets/img/card-bay-village.jpg` (+ `.webp`)
-- **Description:** Sunrise over Lake Erie from Huntington Beach, with the Cleveland skyline and the Huntington breakwall in the foreground. Bay Village, Ohio.
-- **Author:** Erik Drost
-- **Source:** Wikimedia Commons, [File:Brown sunrise at Huntington Beach.jpg](https://commons.wikimedia.org/wiki/File:Brown_sunrise_at_Huntington_Beach.jpg)
-- **Original (Flickr):** https://www.flickr.com/photos/edrost88/42926906960/
-- **License:** [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+- **Description:** Sunrise over Lake Erie from a sandy beach, with a rock foreground and the Cleveland skyline on the horizon.
+- **Source:** AI-generated original (no attribution needed)
 
-### Rocky River — Rocky River Reservation (hike/bike bridge)
+### Rocky River — AI-generated original
 - **File on site:** `assets/img/card-rocky-river.jpg` (+ `.webp`)
-- **Description:** Hike/bike bridge over the East Branch of the Rocky River near Cedar Point in the Rocky River Reservation of the Cleveland Metroparks.
-- **Author:** Chris Light
-- **Source:** Wikimedia Commons, [File:Rocky River Reservation PC270039 nr Little Cedar Point.JPG](https://commons.wikimedia.org/wiki/File:Rocky_River_Reservation_PC270039_nr_Little_Cedar_Point.JPG)
-- **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Description:** A wooden boardwalk along the Rocky River beneath wooded shale cliffs.
+- **Source:** AI-generated original (no attribution needed)
 
-### Westlake — Crocker Park
+### Westlake — Crocker Park (unchanged)
 - **File on site:** `assets/img/card-westlake.jpg` (+ `.webp`)
 - **Description:** Crocker Park on a summer day, Westlake, Ohio (photographed 12 June 2006).
 - **Author:** Darryl Whitehead
 - **Source:** Wikimedia Commons, [File:Crocker Summer 080 (2).jpg](https://commons.wikimedia.org/wiki/File:Crocker_Summer_080_(2).jpg)
 - **License:** Public domain (author released)
 
-### Avon Lake — Veterans Park waterfront
+### Avon Lake — AI-generated original
 - **File on site:** `assets/img/card-avon-lake.jpg` (+ `.webp`)
-- **Description:** Sunset at Veterans Park on Lake Erie, Avon Lake, Ohio.
-- **Author:** Robert Chriss
-- **Source:** Wikimedia Commons, [File:Sunset at Veterans Park AL.JPG](https://commons.wikimedia.org/wiki/File:Sunset_at_Veterans_Park_AL.JPG)
-- **License:** [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+- **Description:** Sunset over Lake Erie from a grassy park shoreline with benches.
+- **Source:** AI-generated original (no attribution needed)
 
-### Avon — historic Town Hall at French Creek
+### Avon — AI-generated original
 - **File on site:** `assets/img/card-avon.jpg` (+ `.webp`)
-- **Description:** Avon's historic 1871 town hall in the French Creek area (Detroit Road), Avon, Ohio. No freely licensed photograph of the Duct Tape Festival was located; this civic landmark stands at French Creek, the city's historic center.
-- **Author:** Tiburd
-- **Source:** Wikimedia Commons, [File:Avon Town Hall, Avon, Ohio 01.jpg](https://commons.wikimedia.org/wiki/File:Avon_Town_Hall,_Avon,_Ohio_01.jpg)
-- **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Description:** A historic red-brick town hall with a white cupola and portico, among trees.
+- **Source:** AI-generated original (no attribution needed)
 
-### Lakewood — Solstice Steps at Lakewood Park
+### Lakewood — AI-generated original
 - **File on site:** `assets/img/card-lakewood.jpg` (+ `.webp`)
-- **Description:** Sunset over Lake Erie from the Solstice Steps at Lakewood Park, Lakewood, Ohio.
-- **Author:** Drawing With Light
-- **Source:** Wikimedia Commons, [File:Solstice Steps Sunset.jpg](https://commons.wikimedia.org/wiki/File:Solstice_Steps_Sunset.jpg)
-- **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Description:** Sunset over Lake Erie from concrete steps leading down to the beach.
+- **Source:** AI-generated original (no attribution needed)
 
 ## Other site photographs (still in use)
 
 ### Hero / Why Bay Village header
 - **File on site:** `assets/img/hero-lake-erie-daylight.jpg` (+ `.webp`)
-- **Description:** Lake Erie shoreline (Edgewater Drive, Lakewood, Ohio) by Dan Crile.
+- **Description:** Lake Erie shoreline (Edgewater Drive, Lakewood, Ohio) by Dan Crile. Also used as the background of `assets/img/og-image.jpg`.
 - **Author:** Dan Crile
 - **Source:** [Unsplash — cKwfDLa5XXw](https://unsplash.com/photos/cKwfDLa5XXw)
 - **License:** [Unsplash License](https://unsplash.com/license)
@@ -74,10 +67,17 @@ resized to 720×920 (JPEG + WebP) for the site; originals were not altered in co
 - **Files on site:** `assets/img/jennifer-halaska-realtor-bay-village.jpg` (+ `.webp`), `assets/img/jennifer-halaska-sm.jpg`
 - **Source:** Jen Halaska's brokerage agent profile (used with permission as her own portrait).
 
+### Howard Hanna logos
+Official Howard Hanna Real Estate Services marks, used as the same assets that appear on [jhenselhomes.com](https://jhenselhomes.com/).
+- **Light / header variant:** `assets/img/howard-hanna-logo.png` (+ `.webp`) — `HHRES_Forest-Gold_Wide_Monogram-Below_Digital.png` (forest-and-gold wide wordmark with monogram below; transparent background). Source: https://images.squarespace-cdn.com/content/v1/63444ec790ce16330f22db18/7bab731e-e6c8-403f-b8a6-871985070d5c/HHRES_Forest-Gold_Wide_Monogram-Below_Digital.png
+- **Dark / footer (and home header over the hero) variant:** `assets/img/howard-hanna-logo-white.png` (+ `.webp`) — `HHRES_White_Stacked_Monogram-Above_Digital.png` (white stacked monogram; transparent background). Source: https://images.squarespace-cdn.com/content/v1/63444ec790ce16330f22db18/4e04a3ea-3b86-416f-bb91-ee252fa649f2/HHRES_White_Stacked_Monogram-Above_Digital.png
+- The Squarespace CDN served these at 2500px on the long edge (`format=original` was the same size). Alt text on the site: "Howard Hanna Real Estate Services".
+
 ## Notes
 - A house photograph previously used for the Westlake card (Josh Lemmon, Unsplash) was retired and is not used on the site.
-- An autumn pond photograph previously used for the Rocky River card (Ally Griffin, Unsplash) was retired in favor of a Rocky River Reservation photograph.
-- No freely licensed Duct Tape Festival photograph was found on Wikimedia Commons at the time of this update (19 November 2026).
+- An autumn pond photograph previously used for the Rocky River card (Ally Griffin, Unsplash) was retired earlier; the later Wikimedia Commons reservation photograph was replaced on 22 November 2026 by an AI-generated original.
+- Previous Wikimedia Commons photographs for Bay Village (Erik Drost), Rocky River (Chris Light), Avon Lake (Robert Chriss), Avon (Tiburd), and Lakewood (Drawing With Light) were replaced on 22 November 2026 by AI-generated originals and are no longer used on the site.
+- Visible photographer credits were removed from all pages on 22 November 2026; this file remains the internal record.
 
 ### Headshot clothing color edit (19 November 2026)
 - The published headshot is a clothing-color edit of Jen's original portrait (original archived in `_build/original-portrait/`).

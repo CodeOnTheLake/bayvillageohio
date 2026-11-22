@@ -5,7 +5,7 @@ Static site (plain HTML/CSS/JS) for [bayvillageohio.com](https://bayvillageohio.
 ## Brand
 Jen Halaska, REALTOR® (schema `alternateName`: Jennifer Halaska). Ohio License #2025007585. Bay Village resident serving Greater Cleveland, with a focus on out-of-town clients relocating to the west-side suburbs.
 
-Own brand — no Howard Hanna theming. Brokerage is named only as a plain-text compliance line in the footer and on the About page: “Brokered by Howard Hanna Real Estate Services.”
+Own brand and palette (warm white, charcoal, lake blue-gray) — no Howard Hanna colors. Official Howard Hanna logos appear in the header and footer. The brokerage is also named in plain text in the header nav (linking to the About brokerage line), the home-page introduction, the home-page meta description, the About page, and the footer: “Brokered by Howard Hanna Real Estate Services.”
 
 Palette: warm white, charcoal, lake blue-gray. Fonts: Cormorant Garamond (headings) + Jost (body).
 
@@ -17,7 +17,7 @@ Palette: warm white, charcoal, lake blue-gray. Fonts: Cormorant Garamond (headin
 ## Pages
 Home, About, Relocation, Why Bay Village, Bay Village, Communities, Buy, Sell, Home Value, Vendors, Contact, Thank you, 404, plus `sitemap.xml`, `robots.txt` (AI bots allowed), and `llms.txt`.
 
-Featured community cards (in this order): Bay Village, Rocky River, Westlake, Avon Lake, Avon, Lakewood. Photos are landmarks, lakefront, parks, or main streets — not houses. Sources and licenses are in `_build/IMAGE_CREDITS.md`.
+Featured community cards (in this order): Bay Village, Rocky River, Westlake, Avon Lake, Avon, Lakewood. Photos are landmarks, lakefront, parks, or main streets — not houses. Photographer names are not shown on the pages. Internal image notes live under `_build/` and are not linked from the site.
 
 ## Still open
 - Longer bio details on the About page
